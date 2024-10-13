@@ -1,0 +1,17 @@
+name: Democraftic
+version: '1.0-SNAPSHOT'
+main: org.democraftic.core.Democraftic
+api-version: '1.21'
+load: STARTUP
+authors: [ UnOursPasLa, Eti ]
+softdepend:
+  - ProtocolLib
+commands:
+  tpa:
+    description: "Se tp a ton cop1."
+  menu:
+    description: "Pour ouvrir le menu"
+  spawn:
+    description: "Pour te teleporter au spawn"
+  setspawn:
+    permission: "admin.setspawn"
