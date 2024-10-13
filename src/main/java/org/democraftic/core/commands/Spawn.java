@@ -26,7 +26,7 @@ public class Spawn implements CommandExecutor {
         if(sender instanceof Player){
             Player player = (Player) sender;
 
-            boolean canTP = Democraftic.teleportationSystem.canPlayerTeleport(player);
+            //boolean canTP = Democraftic.teleportationSystem.canPlayerTeleport(player);
 
             Democraftic.teleportationSystem.WaitTeleportPlayer(player,getSpawnLocationFromConfig());
             //player.teleport(getSpawnLocationFromConfig());
