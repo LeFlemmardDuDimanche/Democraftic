@@ -1,30 +1,38 @@
 package org.democraftic.core;
 
-import com.comphenix.protocol.ProtocolLibrary;
-import com.comphenix.protocol.ProtocolManager;
+import fr.xyness.SCS.SimpleClaimSystem;
+import org.bukkit.Bukkit;
+import org.bukkit.WorldCreator;
+import org.bukkit.WorldType;
 import org.bukkit.plugin.java.JavaPlugin;
-import org.democraftic.core.commands.SetSpawn;
-import org.democraftic.core.commands.Spawn;
-import org.democraftic.core.system.teleportation.TeleportationSystem;
+import org.democraftic.core.commands.MinageTp;
+import org.democraftic.core.commands.RegenerateWorld;
+import org.democraftic.core.listener.ServerListener;
+import org.democraftic.core.system.WorldSystem;
 
 import java.io.File;
 
 public final class Democraftic extends JavaPlugin {
+    public static WorldSystem worldSystem;
 
-    public static TeleportationSystem teleportationSystem;
-    public static ProtocolManager protocolManager;
 
     @Override
     public void onEnable() {
-        teleportationSystem = new TeleportationSystem(this);
-        protocolManager = ProtocolLibrary.getProtocolManager();
-
-
-        getCommand("spawn").setExecutor(new Spawn(this));
-        getCommand("setspawn").setExecutor(new SetSpawn(this));
 
         registerConfig();
+        registerSystems();
+
+
+        registerCommand();
+
+
+        registerListener();
+
+
     }
+
+
+
 
     @Override
     public void onDisable() {
@@ -39,5 +47,21 @@ public final class Democraftic extends JavaPlugin {
             saveConfig();
         }
     }
+
+    private void registerSystems() {
+        worldSystem = new WorldSystem(this);
+    }
+
+    private void registerCommand(){
+        getCommand("minage").setExecutor(new MinageTp(this));
+        getCommand("regenMining").setExecutor(new RegenerateWorld(this));
+    }
+
+    private void registerListener() {
+        getServer().getPluginManager().registerEvents(new ServerListener(this),this);
+    }
+
+
+
 
 }

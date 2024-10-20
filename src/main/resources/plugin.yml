@@ -4,14 +4,11 @@ main: org.democraftic.core.Democraftic
 api-version: '1.21'
 load: STARTUP
 authors: [ UnOursPasLa, Eti ]
-softdepend:
+depend:
+  - SimpleClaimSystem
   - ProtocolLib
 commands:
-  tpa:
-    description: "Se tp a ton cop1."
-  menu:
-    description: "Pour ouvrir le menu"
-  spawn:
-    description: "Pour te teleporter au spawn"
-  setspawn:
-    permission: "admin.setspawn"
+  minage:
+    description: Téléportation au monde Minage.
+  regenMining:
+    permission: dc.maintenance.regenworld
